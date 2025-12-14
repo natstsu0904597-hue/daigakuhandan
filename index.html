@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>大学・学部おすすめ診断（高校生向け）</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="top">
+      <div class="brand">
+        <div class="logo">U</div>
+        <div>
+          <h1>大学・学部おすすめ診断</h1>
+          <p class="sub">高校生向け。エリア×学力×興味から「学部タイプ＋大学候補」を提案します。</p>
+        </div>
+      </div>
+
+      <div class="meter" aria-label="progress">
+        <div class="meter__bar" id="progressBar"></div>
+      </div>
+
+      <div class="meta">
+        <span id="stepText">1 / 10</span>
+        <button class="ghost" id="resetBtn" type="button">リセット</button>
+      </div>
+    </header>
+
+    <main class="card">
+      <!-- ステップ0：条件選択 -->
+      <section id="screen-profile" class="screen active" aria-live="polite">
+        <div class="qhead">
+          <h2>まず条件を選択</h2>
+          <p class="qdesc">エリアと学力帯を選んでから診断を開始します。</p>
+        </div>
+
+        <div class="grid2">
+          <div class="field">
+            <label for="areaSelect">希望エリア</label>
+            <select id="areaSelect">
+              <option value="kanto">関東</option>
+              <option value="kansai">関西</option>
+              <option value="chubu">中部</option>
+              <option value="tohoku">東北</option>
+              <option value="hokkaido">北海道</option>
+              <option value="chugoku">中国</option>
+              <option value="shikoku">四国</option>
+              <option value="kyushu">九州</option>
+              <option value="nationwide">全国（こだわらない）</option>
+            </select>
+            <p class="help">※あとで結果表示に反映されます。</p>
+          </div>
+
+          <div class="field">
+            <label for="levelSelect">学力帯（目安）</label>
+            <select id="levelSelect">
+              <option value="top">上位（難関狙い）</option>
+              <option value="mid">中位（標準〜やや上）</option>
+              <option value="safe">基礎固め（安全校重視）</option>
+            </select>
+            <p class="help">※「今」ではなく「目標」に合わせてもOK。</p>
+          </div>
+        </div>
+
+        <div class="nav single">
+          <button class="primary" id="startBtn" type="button">診断を開始</button>
+        </div>
+
+        <p class="hint">一般入試前提の質問内容になっています。</p>
+      </section>
+
+      <!-- 質問画面 -->
+      <section id="screen-quiz" class="screen" aria-live="polite">
+        <div class="qhead">
+          <h2 id="qTitle">質問</h2>
+          <p id="qDesc" class="qdesc"></p>
+        </div>
+
+        <form id="qForm" class="choices"></form>
+
+        <div class="nav">
+          <button class="ghost" id="backBtn" type="button">戻る</button>
+          <button class="primary" id="nextBtn" type="button">次へ</button>
+        </div>
+
+        <p class="hint" id="hintText">※ 直感でOK。あとで変更できます。</p>
+      </section>
+
+      <!-- 結果画面 -->
+      <section id="screen-result" class="screen" aria-live="polite">
+        <div class="resultHead">
+          <h2>診断結果</h2>
+          <p class="qdesc" id="resultMeta"></p>
+        </div>
+
+        <div id="resultList" class="resultList"></div>
+
+        <details class="details">
+          <summary>大学候補（エリア×学力×タイプ）</summary>
+          <div id="uniList" class="uniList"></div>
+          <p class="help small">※この大学リストは「例」です。あなたが想定する大学群に合わせて簡単に差し替えできます。</p>
+        </details>
+
+        <div class="resultTools">
+          <button class="primary" id="shareBtn" type="button">結果をコピー</button>
+          <button class="ghost" id="retryBtn" type="button">もう一回診断</button>
+        </div>
+      </section>
+    </main>
+
+    <footer class="foot">
+      <small>※ 診断は目安です。最終判断は学部のカリキュラム（シラバス）と入試科目の確認がおすすめ。</small>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
